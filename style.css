@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color: rgb(255, 231, 165);
+    background-color: #FFECCC;
 }
 
 .container{
@@ -17,6 +17,7 @@ body{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 80px;
     margin: 30px;
+    color: #19323C;
 }
 
 .outerlayer{
@@ -25,10 +26,22 @@ body{
 
 .input{
     font-size: 20px;
+    padding: 3px 15px;
+    background-color: white;
+    border: solid 1px black;
+    border-radius: 10px;
+}
+input::placeholder{
+    color: #FFECCC;
 }
 
-.addbtn{
+.addbtn {
     font-size: 20px;
+    background-color: #A93F55;
+    padding: 5px 15px;
+    border-radius: 25%;
+    color: #F2D0A4;
+    border: none;
 }
 
 .taskbox{ 
@@ -36,7 +49,7 @@ body{
     background-size: cover;
     height: 70vh;
     width: 70vw;
-    border: 2px solid black;
+    border: 2px solid #19323C;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -48,20 +61,27 @@ h2{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin: 10px 0 10px 20px;
     position: relative;
-    
+    color: #19323C;
 }
 
 .taskList{
     margin: 5px;
 }
 
+.checkbox{
+    accent-color: #a93f55;
+    border: #19323C;
+}
+
 .task{
     margin: 0 15px 0 5px;
     font-family:Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #19323C;
 }
 
 .deletebtn{
-    background-color: white;
+    background-color: none;
     border: none;
     font-weight: bolder;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -72,3 +92,20 @@ hr{
     margin: 10px 0 0 0;
 }
 
+@media only screen and (max-width: 445px) {
+    .heading{
+         font-size: 70px; 
+         text-align: center;
+    }
+    .outerlayer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .input{
+        text-align: center;
+    }
+    .addbtn{
+        margin-top: 10px;
+    }
+}
