@@ -2,6 +2,8 @@ const addbtn = document.querySelector(".addbtn");
 const input = document.querySelector(".input");
 const taskbox = document.querySelector(".taskbox");
 
+loadTask();
+
 addbtn.addEventListener("click", () => {
     addtask();
     input.value = " ";
@@ -14,12 +16,12 @@ document.addEventListener("keydown", (e) =>{
     }
 })
 
-function addtask() {
+function addtask(savedValue = null, savedChecked = false) {
     
-    const value = input.value;
+    const value = savedValue || input.value;
     if (value === "" || value === " ") {
         alert("no task added");
-        return
+        return;
     }
     
     const taskList = document.createElement("ul");
@@ -37,6 +39,7 @@ function addtask() {
         else{
             task.style.textDecoration = "none";
         }
+        saveTask();
     })
     
     const task = document.createElement("span");
@@ -50,5 +53,25 @@ function addtask() {
     taskList.appendChild(deletebtn);
     deletebtn.addEventListener("click", () => {
         taskList.remove();
+        saveTask();
     })
+    
+    if(!savedValue) saveTask();
+}
+
+function saveTask() {
+    const tasks = [];
+    const taskList = document.querySelectorAll(".taskList");
+    taskList.forEach(item => {
+        tasks.push({
+            text: item.querySelector(".task").innerText,
+            checked: item.querySelector(".checkbox").checked
+        });
+    });
+    localStorage.setItem("tasks",JSON.stringify(tasks));
+}
+
+function loadTask(){
+    const load = JSON.parse(localStorage.getItem("tasks")) || [];
+    load.forEach(t => addtask(t.text, t.checked));
 }
